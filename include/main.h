@@ -35,7 +35,9 @@
 #define PROS_USE_LITERALS
 
 #include "EZ-Template/api.hpp"
+#include "OWL2/autons.hpp"
 #include "api.h"
+extern Drive chassis;
 /**
  * You should add more #includes here
  */
@@ -53,6 +55,7 @@
 // using namespace pros;
 // using namespace pros::literals;
 // using namespace okapi;
+using namespace ez;
 
 /**
  * Prototypes for the competition control tasks are redefined here to ensure

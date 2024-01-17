@@ -36,6 +36,8 @@
 
 #include "EZ-Template/api.hpp"
 #include "OWL2/autons.hpp"
+#include "OWL2/op_control.hpp"
+#include "OWL2/robot_config.hpp"
 #include "api.h"
 extern Drive chassis;
 /**

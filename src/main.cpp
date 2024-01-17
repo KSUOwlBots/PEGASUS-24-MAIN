@@ -1,17 +1,9 @@
 #include "main.h"
-Drive chassis(
-  {11, -1},
-  {20, -10},
-  5,
-  5,
-  600,
-  .6
-);
-
+Drive chassis({-17, -10}, {11, 2}, 21, 3.25, 600, .6);
 void initialize() {
   pros::delay(500);
   chassis.toggle_modify_curve_with_controller(true);
-  chassis.set_active_brake(0);
+  chassis.set_active_brake(.1);
   chassis.set_curve_default(0, 0);
   default_constants();
   ez::as::auton_selector.add_autons({
@@ -31,9 +23,11 @@ void autonomous() {
   ez::as::auton_selector.call_selected_auton();
 }
 void opcontrol() {
+  pros::Task intake_task(intake_control, TASK_PRIORITY_DEFAULT,
+                         TASK_STACK_DEPTH_DEFAULT, "Intake");
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
   while (true) {
-    chassis.tank();
+    chassis.arcade_standard(ez::SPLIT);
     pros::delay(ez::util::DELAY_TIME);
   }
 }

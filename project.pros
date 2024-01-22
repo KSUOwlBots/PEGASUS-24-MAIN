@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "2024_01_17",
+    "project_name": "pegaSUS",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -189,7 +189,8 @@
       }
     },
     "upload_options": {
-      "slot": 1
+      "slot": 3,
+      "icon": "pizza"
     }
   }
 }

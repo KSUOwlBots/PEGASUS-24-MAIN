@@ -1,5 +1,5 @@
 #include "main.h"
-Drive chassis({-15, 18, -19, 20}, {10, -11, 12, -14}, 21, 3.25, 600, .6);
+Drive chassis({-15, 18, -19, 20}, {10, -11, 12, -14}, 9, 3.25, 600, .6);
 void initialize() {
   pros::delay(500);
   chassis.toggle_modify_curve_with_controller(true);

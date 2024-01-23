@@ -11,3 +11,18 @@ void intake_control() {
     pros::delay(ez::util::DELAY_TIME);
   }
 }
+
+void slapper_control() {
+  bool toggle = false;
+  while (true) {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+      toggle = !toggle;
+
+      if (toggle) {
+        slapper_left.move_velocity(100);
+      } else {
+        slapper_right.move_velocity(-100);
+      }
+    }
+  }
+}

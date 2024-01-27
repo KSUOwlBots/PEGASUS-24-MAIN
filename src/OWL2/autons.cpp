@@ -1,4 +1,5 @@
 #include "main.h"
+#include "OWL2/robot_config.hpp"
 
 void default_constants() {
   chassis.set_slew_min_power(80, 80);
@@ -10,13 +11,8 @@ void default_constants() {
   chassis.set_pid_constants(&chassis.swingPID, 7, 0, 45, 0);
 }
 void pid_test() {
-
-  chassis.set_drive_pid(24, 100, true);
+  
+  chassis.set_drive_pid(36,110);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-12, 100);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-12, 100);
-  chassis.wait_drive();
 }

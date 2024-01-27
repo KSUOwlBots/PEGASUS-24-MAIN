@@ -1,16 +1,15 @@
 #include "main.h"
-Drive chassis({-15, 18, -19, 20}, {10, -11, 12, -14}, 9, 3.25, 600, .6);
+#include "OWL2/autons.hpp"
+Drive chassis({-10, -17}, {13, 8}, 4, 4.00, 200, 1);
 void initialize() {
   pros::delay(500);
-  chassis.toggle_modify_curve_with_controller(false);
+  chassis.toggle_modify_curve_with_controller(true);
   chassis.set_active_brake(.1);
   chassis.set_curve_default(5, 5);
   chassis.joy_thresh_opcontrol(5, 5);
+  default_constants();
   slapper_left.set_brake_mode(MOTOR_BRAKE_HOLD);
   slapper_right.set_brake_mode(MOTOR_BRAKE_HOLD);
-  WinchL.set_brake_mode(MOTOR_BRAKE_HOLD);
-  WinchR.set_brake_mode(MOTOR_BRAKE_HOLD);
-  default_constants();
   chassis.initialize();
 }
 void disabled() {}
@@ -23,11 +22,8 @@ void autonomous() {
   pid_test();
 }
 void opcontrol() {
-  WinchL.set_brake_mode(MOTOR_BRAKE_HOLD);
-  WinchR.set_brake_mode(MOTOR_BRAKE_HOLD);
   pros::Task intake_task(intake_control);
   pros::Task slapper_task(slapper_control);
-  pros::Task WinchControl(WinchC);
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
   while (true) {
     chassis.arcade_standard(ez::SPLIT);
